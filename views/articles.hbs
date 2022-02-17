@@ -1,0 +1,11 @@
+{{#each articles}}
+  <div class="w-full container mx-auto my-20 bg-indigo-100 rounded p-5 relative">
+    <h2 class="text-lg font-bold mb-2">{{title}}</h2>
+    <p class="mb-4">{{content}}</p>
+    <div>{{author}} le {{date}}</div>
+  </div>
+{{else}}
+  <div class="w-full container mx-auto my-20 bg-indigo-100 rounded p-5 relative">
+    <div>No articles</div>
+  </div>
+{{/each}}
