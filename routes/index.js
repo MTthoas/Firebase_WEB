@@ -19,7 +19,20 @@ router.get('/auth', function (req, res, next) {
 
 router.post('/auth', function (req, res, next) {
   const { username, password } = req.body
-  // TODO
+  firebase.auth().signInWithEmailAndPassword(username, password)
+  .then(function (userCredential) {
+
+    // Traitement quand la fonction a réussi
+
+    res.redirect('/')
+
+
+
+  }).catch(function (error) {
+
+    res.render('auth', { error: "Bad Credentials"})
+
+  });
 })
 
 router.get('/logout', function (req, res, next) {

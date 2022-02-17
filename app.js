@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Auth middleware
 app.use(function (req, res, next) {
-  const user = null // TODO
+  const user = firebase.auth().currentUser; // TODO
   if (req.url === '/auth' && user)
     return res.redirect('/');
 
