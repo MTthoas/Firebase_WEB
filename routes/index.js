@@ -6,7 +6,7 @@ const upload = multer()
 const router = express.Router()
 
 const firebase = require('../firebase')
-//const firebaseAdmin = require('../firebaseAdmin')
+const firebaseAdmin = require('../firebaseAdmin')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -36,7 +36,14 @@ router.post('/auth', function (req, res, next) {
 })
 
 router.get('/logout', function (req, res, next) {
-  // TODO
+  firebase.auth().signOut()
+  .then(function () {
+
+    res.redirect('/auth');
+
+  }).catch(function(error){
+
+  })
 })
 
 router.get('/gallery', function (req, res, next) {
@@ -52,6 +59,12 @@ router.post('/gallery', upload.single('image'), function (req, res, next) {
 
 router.get('/articles', async function (req, res, next) {
   const articles = []
+  const ref = firebaseAdmin.firestore().collection('articles')
+  const snapshot = await ref.get();
+  snapshot.forEach(function(){
+    const article = document.data();
+    articles.push(article)
+  });
   // TODO
   res.render('articles', { articles })
 })
