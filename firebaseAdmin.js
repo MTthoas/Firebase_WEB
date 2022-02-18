@@ -7,6 +7,7 @@ const firebaseConfig = {
   authDomain: "tp-cloud-bfe26.firebaseapp.com",
   databaseURL: "https://tp-cloud-bfe26-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "tp-cloud-bfe26",
+  storageBucket: "tp-cloud-bfe26.appspot.com"
 };
 admin.initializeApp(firebaseConfig);
 
